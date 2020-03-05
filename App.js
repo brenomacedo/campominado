@@ -102,7 +102,7 @@ class App extends React.Component{
   render(){
     return (
         <View style={styles.container}>
-          <LevelSelection onCalcel={() => this.setState({ showLevelSelection: false })} onLevelSelected={this.onLevelSelected} isVisible={this.state.showLevelSelection}></LevelSelection>
+          <LevelSelection onCancel={() => this.setState({ showLevelSelection: false })} onLevelSelected={this.onLevelSelected} isVisible={this.state.showLevelSelection}></LevelSelection>
           <Header onFlagPress={() => this.setState({ showLevelSelection: true })} onNewGame={() => this.setState(this.createState())} flagsLeft={this.minesAmount() - flagsUsed(this.state.board)} />
           <View style={styles.board}> 
             <MineField board={this.state.board} onOpenField={this.onOpenField} onSelectField={this.onSelectField} />
