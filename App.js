@@ -1,10 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import ImageScreen from './assets/imgs/bomb.png'
 
 import React from 'react';
 import {
@@ -14,7 +10,8 @@ import {
   View,
   Text,
   StatusBar,
-  Alert
+  Alert,
+  Image
 } from 'react-native';
 
 
@@ -34,7 +31,7 @@ import {
 import Header from './src/components/Header'
 import LevelSelection from './src/screens/LevelSelection'
 
-class App extends React.Component{
+class Game extends React.Component{
 
   constructor(props){
     super(props)
@@ -112,6 +109,23 @@ class App extends React.Component{
   }
 }
 
+class SplashScreen extends React.Component {
+
+  componentDidMount = () => {
+    setTimeout(() => {
+      this.props.navigation.navigate('game')
+    }, 2000)
+  }
+
+  render() {
+    return (
+      <View style={styles.splashContainer}>
+        <Image source={ImageScreen} style={styles.image} />
+      </View>
+    )
+  }
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -120,7 +134,30 @@ const styles = StyleSheet.create({
   board: {
     alignItems: 'center',
     backgroundColor: 'gray'
+  },
+  splashContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  image: {
+    width: 120,
+    height: 120
   }
 })
 
-export default App;
+const Switch = createStackNavigator()
+
+
+export default class App extends React.Component{
+  render() {
+    return (
+      <NavigationContainer>
+        <Switch.Navigator headerMode={false} initialRouteName='splash'>
+          <Switch.Screen name='splash' component={SplashScreen} />
+          <Switch.Screen name='game' component={Game} />
+        </Switch.Navigator>
+      </NavigationContainer>
+    )
+  }
+}
