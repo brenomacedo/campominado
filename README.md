@@ -1,4 +1,4 @@
-<h1 align="center">Campo Minado</h1>
+<h1 align="center">💣 Campo Minado 💣</h1>
 <h2 align="center">Clone o repositorio, instale as dependencias e rode o comando: "react-native run-android/run-ios" com o emulador aberto.</h2>
 <h2 align="center">Controles:</h2>
 <ul>
